@@ -57,6 +57,7 @@ void measure(Par *par, double *atoms, Measured *val)
 #endif
 
   val->etot = etot;
+  val->etot2 = etot * etot;
 
   return;
 }

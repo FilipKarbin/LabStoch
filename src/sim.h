@@ -7,7 +7,7 @@
 
 typedef struct Measured {
   double epot, etot, pressure;
-  // Fix this (4). Introduce variable for total energy squared
+  double etot2;
 #ifdef VEL
   double ekin;
 #endif

@@ -7,8 +7,10 @@
 
 double standard_error(double x, double x2, int nblock)
 {
-  return 0.0;
-  //  Fix this (4). Calculate and return the standard error
+  double mean = x / nblock;
+  double mean2 = x2 / nblock;
+
+  return sqrt((mean2 - mean * mean) / (nblock - 1));
 }
 
 
@@ -20,7 +22,6 @@ void print_standard_error(char *str, double x, double x2, int nblock)
   printf("%s%g +/- %g\n", str, x / nblock, s);
   return;
 }
-
 
 
 // Construct file names based on the parameters of the run, e.g.
@@ -48,7 +49,6 @@ char *get_filename(Par *par)
 
   return fname;
 }
-
 
 
 // Determine size of the simulation cell in D dimensions
@@ -218,7 +218,9 @@ double *run_simulation(Par *par, double *atoms)
   // Fix this (4): Print out total energy with standard error
 #endif
   // Fix this (4): calculate and print out \sigma_E = sqrt(<E^2> - <E>^2)
-
+  double e = v1sum->etot / par->nblock;
+  double e2 = v1sum-> etot2 / par->nblock;
+  printf("sigma_E: %g\n", sqrt(e2 - e * e));
 #ifdef MC
   printf("Acceptance ratio = %g\n", naccept / (par->n * 1.0 * par->nsamp * par->nblock));
 #endif
