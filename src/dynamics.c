@@ -45,12 +45,13 @@ void forces_from_pos(Par *par, double *pos, double *force)
 void langevin_forces(Par *par, double *vel, double *force)
 {
   int i, d;
-  // Fix this (5):  double Clang = 
+  double Clang = sqrt(6.0*par->alpha * par->T / par->deltat);	// Langevin coefficient for the noise term. This is the standard deviation of the noise. from task 3.2
 
   for (i = 0; i < par->n; i++)
     for (d = 0; d < D; d++) {
+        force[D * i + d] += -par->alpha * vel[D * i + d] + Clang * dran_sign();
       // Fix this (5). Use dran_sign() which returns a value between -1 and 1.
-      // Fix this (5):   force[D * i + d] += ???;
+      // Fix this (5):   force[D * i + d] += ;
   }
 }
 
