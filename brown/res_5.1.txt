@@ -1,0 +1,19 @@
+./sim N=64 rho=0.3 T=1.0 alpha=10.0 deltat=0.001 nblock=40 seed=1 run 
+Potential E: -0.810393 +/- 0.0011554
+Pressure   : 0.275892 +/- 0.000654731
+sigma_E: 0.0709608
+
+./sim N=64 rho=0.3 T=1.0 alpha=10.0 deltat=0.002 nblock=40 seed=1 run 
+Potential E: -0.806041 +/- 0.00107722
+Pressure   : 0.274266 +/- 0.000692159
+sigma_E: 0.0712941
+
+./sim N=64 rho=0.3 T=1.0 alpha=10.0 deltat=0.003 nblock=40 seed=1 run 
+Potential E: -0.802471 +/- 0.00100416
+Pressure   : 0.274374 +/- 0.000758928
+sigma_E: 0.0714705
+
+./sim N=64 rho=0.3 T=1.0 alpha=10.0 deltat=0.004 nblock=40 seed=1 run 
+Potential E: -0.801589 +/- 0.00123882
+Pressure   : 0.275767 +/- 0.000766013
+sigma_E: 0.072454
