@@ -86,8 +86,22 @@ void pos_from_vel(Par *par, double *pos, double *vel)
 }
 #endif
 
-  
+#ifdef BROWN
+void pos_from_force(Par *par, double *pos, double *force)
+{
+  int i, d;
+  double Cbrown = sqrt(6.0 * par->T / (par->deltat * par->alpha));
 
+  for (i = 0; i < par->n; i++) {
+    for (d = 0; d < D; d++) {
+      double eta = Cbrown * dran_sign();
+      double newpos = pos[D * i + d] + (par->deltat * force[D * i + d]) / (par->alpha) + eta * (par->deltat);
+      pos[D * i + d] = inrange(newpos, par->L[d]);
+    }
+  }
+}
+#endif
+  
 
 // The function 'step' propagates the equations the time deltat.
 // Three different kinds of dynamics:
